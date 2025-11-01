@@ -1,0 +1,65 @@
+{
+  "name": "Workflow 2: Manual trigger + send a custom message on gmail",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -496,
+        -32
+      ],
+      "id": "df2b8fce-e7d2-419e-b6d4-392ac568e28b",
+      "name": "Trigger-1"
+    },
+    {
+      "parameters": {
+        "sendTo": "abhishekbalaji2019@gmail.com",
+        "subject": "custom message",
+        "emailType": "text",
+        "message": "Hello user, Keep learning",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -272,
+        -32
+      ],
+      "id": "b4283ee5-933e-4872-99ff-c969f8ab32c2",
+      "name": "Send a message",
+      "webhookId": "2e7800cb-cf14-4bc4-aa26-e3afdeaedf25",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "qgMPHUnBcFcd3LHR",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Trigger-1": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "b574a57f-5149-47af-ad49-7385e9ca80a3",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cee0294f181ee866f6be23b9eceb8157c9c0c8b1cc93fe059298da7a0250068d"
+  },
+  "id": "6S2TkCB3ld7qKpuT",
+  "tags": []
+}
