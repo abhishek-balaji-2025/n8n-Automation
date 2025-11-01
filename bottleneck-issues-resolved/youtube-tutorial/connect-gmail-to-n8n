@@ -1,0 +1,16 @@
+Youtube Tutorial Link
+https://www.youtube.com/watch?v=wVVEpz0Vw34
+
+Video Summary: Connect Gmail to n8n in 4 Minutes (2025)
+By Palmer Joseph – Quick tutorial on integrating n8n with Gmail for email automation (e.g., managing clients/deadlines).
+Key Steps:
+
+Install n8n & add Gmail trigger (on new message).
+Set up Google Cloud project/OAuth consent (external, add test user).
+Create OAuth client (web app), add n8n callback URI, copy ID/secret.
+Paste into n8n credentials, authorize via Google sign-in.
+Enable Gmail API in Google Cloud.
+
+Message: Enables AI-powered Gmail automations like auto-responses/pulling emails—game-changer for workflows. (92 words)
+
+
