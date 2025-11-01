@@ -1,0 +1,147 @@
+{
+  "name": "workflow-3: Add a row of data into google sheets",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -400,
+        -96
+      ],
+      "id": "cdc88dce-8ff1-4770-a57f-6713da6b722e",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f21d605a-1b09-44b2-9bc7-349c534a3077",
+              "name": "timestamp",
+              "value": "={{ $now.toFormat('yyyy-MM-dd HH:mm:ss') }}",
+              "type": "string"
+            },
+            {
+              "id": "40af2bbf-e6ef-45fe-99c8-8b14ac2c31b3",
+              "name": "message",
+              "value": "Hello from N8N",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -192,
+        -96
+      ],
+      "id": "0435c60f-2092-4fcc-a224-0090be666783",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1HEkwRvyNhPkvCWxObtme1Lt2_SDtRHB5Z0_M4UAuFa8",
+          "mode": "list",
+          "cachedResultName": "n8n-google-sheet",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1HEkwRvyNhPkvCWxObtme1Lt2_SDtRHB5Z0_M4UAuFa8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1HEkwRvyNhPkvCWxObtme1Lt2_SDtRHB5Z0_M4UAuFa8/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "timestamp": "={{ $json.timestamp }}",
+            "message": "={{ $json.message }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "timestamp",
+              "displayName": "timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "message",
+              "displayName": "message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        16,
+        -96
+      ],
+      "id": "efe4e010-e4eb-4b2e-a8f1-82d71bcdafd4",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Bj1cyguQT7iJtLvL",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "34a8abd5-926d-4c94-bf92-a0c29b80f3cd",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cee0294f181ee866f6be23b9eceb8157c9c0c8b1cc93fe059298da7a0250068d"
+  },
+  "id": "C4vJf3pLVnWX0g9B",
+  "tags": []
+}
