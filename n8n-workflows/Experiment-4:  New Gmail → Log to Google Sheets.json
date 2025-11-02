@@ -1,0 +1,130 @@
+{
+  "name": "Experiment: New Gmail → Log to Google Sheets",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "filters": {}
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -528,
+        -16
+      ],
+      "id": "9fa50c19-e0c8-4ef8-84f9-a477dbae00df",
+      "name": "Gmail Trigger",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "qgMPHUnBcFcd3LHR",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1NPpnUgU-AXp646gsH8BvUbrKm5SQYN6DqL0eWZIT2Ok",
+          "mode": "list",
+          "cachedResultName": "add new gmail messages",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1NPpnUgU-AXp646gsH8BvUbrKm5SQYN6DqL0eWZIT2Ok/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1NPpnUgU-AXp646gsH8BvUbrKm5SQYN6DqL0eWZIT2Ok/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Subject": "={{ $json.Subject }}",
+            "From": "={{ $json.From }}",
+            "Time": "={{ $today }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Subject",
+              "displayName": "Subject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "From",
+              "displayName": "From",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Time",
+              "displayName": "Time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -320,
+        -16
+      ],
+      "id": "4cc66b00-274d-4255-813d-c8ac7f21d5f5",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DVXiVKRKN2v20tYL",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "a372541f-2616-4fe6-a3f1-ae27599ab4fa",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cee0294f181ee866f6be23b9eceb8157c9c0c8b1cc93fe059298da7a0250068d"
+  },
+  "id": "1o4vkWt9ooHow0BM",
+  "tags": []
+}
